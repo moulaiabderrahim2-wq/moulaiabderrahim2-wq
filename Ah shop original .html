@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AH<span>SHOP</span> - متجر الأناقة</title>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;700&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tajawal', sans-serif;
+  }
+
+  body {
+    background: #121212;
+    color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* HEADER */
+  header {
+    background: #0b1c2d;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  header h1 {
+    color: #fff;
+    font-size: 28px;
+    letter-spacing: 1px;
+    font-weight: 900;
+    user-select: none;
+  }
+
+  header h1 span {
+    color: #4da3ff;
+  }
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    user-select: none;
+  }
+
+  nav a:hover {
+    color: #4da3ff;
+  }
+
+  /* HERO */
+  .hero {
+    height: 80vh;
+    background:
+      linear-gradient(rgba(11,28,45,0.75), rgba(11,28,45,0.75)),
+      url("https://images.unsplash.com/photo-1521335629791-ce4aec67dd47");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+
+  .hero h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    font-weight: 900;
+  }
+
+  .hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    font-weight: 500;
+  }
+
+  .btn {
+    padding: 14px 40px;
+    background: #4da3ff;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    transition: background 0.3s ease;
+    display: inline-block;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background: #1a73e8;
+  }
+
+  /* تأثير الذبذبة للنص */
+  @keyframes pulseAnimation {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+      text-shadow: 0 0 10px #4da3ff;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.85;
+      text-shadow: 0 0 20px #80bfff;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+      text-shadow: 0 0 10px #4da3ff;
+    }
+  }
+
+  .pulse {
+    animation: pulseAnimation 2.5s ease-in-out infinite;
+  }
+
+  /* تأثير ذبذبة أضعف للزر */
+  @keyframes pulseBtnAnimation {
+    0% {
+      box-shadow: 0 0 10px #4da3ff;
+      transform: scale(1);
+    }
+    50% {
+      box-shadow: 0 0 18px #80bfff;
+      transform: scale(1.05);
+    }
+    100% {
+      box-shadow: 0 0 10px #4da3ff;
+      transform: scale(1);
+    }
+  }
+
+  .pulse-btn {
+    animation: pulseBtnAnimation 2.5s ease-in-out infinite;
+  }
+
+  /* قسم من نحن */
+  section.about {
+    background: #1f1f1f;
+    padding: 70px 60px;
+    color: #f5f5f5;
+    text-align: center;
+    border-radius: 15px;
+    margin: 40px 60px;
+  }
+
+  section.about h2 {
+    font-size: 36px;
+    margin-bottom: 25px;
+    font-weight: 700;
+  }
+
+  section.about p {
+    max-width: 800px;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  /* PRODUCTS */
+  section.products {
+    padding: 80px 60px;
+  }
+
+  section.products h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 60px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #f5f5f5;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+    gap: 40px;
+  }
+
+  .card {
+    background: #1f1f1f;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 18px 40px rgba(0,0,0,1);
+  }
+
+  .image-wrapper {
+    overflow: hidden;
+    height: 280px;
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+  }
+
+  .card:hover .image-wrapper img {
+    transform: scale(1.1);
+  }
+
+  .card-content {
+    padding: 25px 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  .card-content h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: #f5f5f5;
+  }
+
+  .price {
+    font-size: 20px;
+    color: #4da3ff;
+    margin-bottom: 25px;
+    font-weight: 700;
+  }
+
+  .btn.buy-btn {
+    background: #4da3ff;
+  }
+
+  .btn.buy-btn:hover {
+    background: #1a73e8;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0b1c2d;
+    padding: 25px 60px;
+    text-align: center;
+    color: #fff;
+    margin-top: auto;
+    user-select: none;
+  }
+
+  .social-links {
+    margin-top: 15px;
+  }
+
+  .social-links a {
+    margin: 0 15px;
+    color: #4da3ff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-block;
+  }
+
+  .social-links a:hover {
+    color: #1a73e8;
+  }
+
+  .social-links svg {
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+    fill: currentColor;
+  }
+
+  @media (max-width: 768px) {
+    section.products {
+      padding: 50px 30px;
+    }
+    section.about {
+      margin: 40px 30px;
+      padding: 50px 30px;
+    }
+    .grid {
+      gap: 25px;
+    }
+    footer {
+      padding: 20px 30px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+    .card-content h3 {
+      font-size: 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>AH<span>SHOP</span></h1>
+  <nav>
+    <a href="#">الرئيسية</a>
+    <a href="#about">من نحن</a>
+    <a href="#products">الملابس</a>
+    <a href="#contact">تواصل</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <h2 class="pulse">أناقة عصرية تليق بك</h2>
+    <p>تصاميم بسيطة • جودة عالية • ستايل فخم</p>
+    <a href="#products" class="btn pulse-btn">تسوق الآن</a>
+  </div>
+</section>
+
+
+
+<section class="products" id="products">
+  <h2>منتجاتنا</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="image-wrapper">
+        <img src="logo.jpg" alt="logo" />
+      </div>
+      <div class="card-content">
+        <h3>sweet Original • Taille:S</h3>
+        <p class="price">2400 دج</p>
+        <a href="https://wa.me/213779962148?text=مرحباً%20أود%20طلب%20المنتج%20التالي%3A%0Aالاسم%3A%20%0Aرقم%20الهاتف%3A%20%0Aالولاية%3A%20%0Aالمنتج%3A%20" target="_blank" class="btn buy-btn">شراء الآن</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="image-wrapper">
+        <img src="logo1.jpg" alt="قميص الدفة" />
+      </div>
+      <div class="card-content">
+        <h3>Sweat-shirt sans capuche • Taille:XL</h3>
+        <p class="price">2400 دج</p>
+        <a href="https://wa.me/213779962148?text=مرحباً%20أود%20طلب%20المنتج%20التالي%3A%0Aالاسم%3A%20%0Aرقم%20الهاتف%3A%20%0Aالولاية%3A%20%0Aالمنتج%3A%20" target="_blank" class="btn buy-btn">شراء الآن</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="image-wrapper">
+        <img src="logo2.jpg" alt="جاكيت أسود" />
+      </div>
+      <div class="card-content">
+        <h3>Sweat-shirt à demi-zip • Taille:L</h3>
+        <p class="price">2600 دج</p>
+        <a href="https://wa.me/213779962148?text=مرحباً%20أود%20طلب%20المنتج%20التالي%3A%0Aالاسم%3A%20%0Aرقم%20الهاتف%3A%20%0Aالولاية%3A%20%0Aالمنتج%3A%20" target="_blank" class="btn buy-btn">شراء الآن</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="image-wrapper">
+        <img src="logo3.jpg" alt="بنطال كلاسيكي" />
+      </div>
+      <div class="card-content">
+        <h3>Sweat over size • Taille:XL</h3>
+        <p class="price">2900 دج</p>
+        <a href="https://wa.me/213779962148?text=مرحباً%20أود%20طلب%20المنتج%20التالي%3A%0Aالاسم%3A%20%0Aرقم%20الهاتف%3A%20%0Aالولاية%3A%20%0Aالمنتج%3A%20" target="_blank" class="btn buy-btn">شراء الآن</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="image-wrapper">
+        <img src="logo4.jpg" alt="حذاء أنيق" />
+      </div>
+      <div class="card-content">
+        <h3>sweet Original • Taille:M</h3>
+        <p class="price">2400 دج</p>
+        <a href="https://wa.me/213779962148?text=مرحباً%20أود%20طلب%20المنتج%20التالي%3A%0Aالاسم%3A%20%0Aرقم%20الهاتف%3A%20%0Aالولاية%3A%20%0Aالمنتج%3A%20" target="_blank" class="btn buy-btn">شراء الآن</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="image-wrapper">
+        <img src="logo6.jpg" alt="قبعة كلاسيكية" />
+      </div>
+      <div class="card-content">
+        <h3>sweet Original • Taille:XS</h3>
+        <p class="price">2400 دج</p>
+        <a href="https://wa.me/213779962148?text=مرحباً%20أود%20طلب%20المنتج%20التالي%3A%0Aالاسم%3A%20%0Aرقم%20الهاتف%3A%20%0Aالولاية%3A%20%0Aالمنتج%3A%20" target="_blank" class="btn buy-btn">شراء الآن</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="about" id="about">
+  <h2>من نحن</h2>
+  <p>
+    في AH<span style="color:#4da3ff;">SHOP</span> نؤمن أن الأناقة ليست مجرد ملابس بل أسلوب حياة. نقدم لكم تصاميم تجمع بين البساطة والفخامة، مع جودة عالية تناسب كل الأذواق. نسعى دوماً لتلبية رغباتكم بأفضل المنتجات والخدمات، مع ضمان توصيل سريع وتجربة تسوق ممتعة.
+  </p>
+</section>
+
+<footer id="contact">
+  <div>© 2026 AH<span>SHOP</span> – جميع الحقوق محفوظة</div>
+  <div class="social-links">
+    <a href="https://wa.me/213779962148" target="_blank" aria-label="واتساب">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.84 11.84 0 0 0 3.48 20.52L1 23l2.5-.72a11.84 11.84 0 0 0 16.99-16.8ZM12 21a9 9 0 0 1-5.12-1.53l-.36-.22-3 1 1-3-.23-.37A9 9 0 1 1 12 21Z"/><path d="m16.42 15.6-2.27-.65a.64.64 0 0 0-.58.15l-.65.64a6.38 6.38 0 0 1-2.4-2.4l.64-.65a.64.64 0 0 0 .15-.58l-.65-2.27a.63.63 0 0 0-.63-.46h-.91a.64.64 0 0 0-.64.63 8.77 8.77 0 0 0 8.73 8.73.64.64 0 0 0 .63-.64v-.91a.63.63 0 0 0-.46-.63Z"/></svg>
+    </a>
+    <a href="https://facebook.com/YourPage" target="_blank" aria-label="فيسبوك">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.675 0H1.325A1.325 1.325 0 0 0 0 1.325v21.351A1.325 1.325 0 0 0 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.24h-1.918c-1.504 0-1.796.715-1.796 1.763v2.313h3.59l-.467 3.622h-3.123V24h6.116A1.325 1.325 0 0 0 24 22.675V1.325A1.325 1.325 0 0 0 22.675 0z"/></svg>
+    </a>
+    <a href="https://instagram.com/YourProfile" target="_blank" aria-label="إنستغرام">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2�رام">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2 22.675 0z"/></svg>
+    </a>
+    <a href="https://instagram.com/YourProfile" target="_blank" aria-label="إنستغرام">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2
